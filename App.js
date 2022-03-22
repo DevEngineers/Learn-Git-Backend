@@ -5,6 +5,7 @@ const logger = require("morgan");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const indexRouter = require("./routes/index");
+const answerRouter = require("./routes/answerRouter");
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -37,6 +38,8 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
+app.use("/answer",answerRouter);
+
 /**
  * catch 404 and forward to error handler
  */
