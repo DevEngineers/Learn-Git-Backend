@@ -18,6 +18,11 @@ const Answer = new Schema(
       default: "",
       required: true,
     },
+    isCorrect:{
+      type:Boolean,
+      default:false,
+      required:true,
+    }
   },
   {
     timestamps: true,

@@ -45,7 +45,6 @@ exports.getAnswerByID = async (req,res,next) => {
 };
 
 exports.getAnswerByTopicID = async (req,res,next) => {
-    console.log(req.params.id);
     await Answer.find({topicId:req.params.id})
         .then((answer) => {
             res.statusCode = 200;
@@ -60,7 +59,7 @@ exports.getAnswerByTopicID = async (req,res,next) => {
 };
 
 exports.updateAnswers = async (req, res, next) => {
-        await Answer.findByIdAndUpdate(req.params.id,{
+        await Answer.findOneAndUpdate(req.params.id,{
             $set:req.body
         },{ new :true })
             .then((answer) => {
@@ -76,11 +75,11 @@ exports.updateAnswers = async (req, res, next) => {
 };
 
 exports.deleteAnswers = async (req, res, next) => {
-        await Answer.findByIdAndRemove(req.params.id)
-            .then((answer) => {
+        await Answer.remove({})
+            .then(() => {
                 res.statusCode = 200;
                 res.setHeader("Content-Type", "application/json");
-                res.json(answer);
+                res.json({data:"Success"});
             },(err) => {
                 next(err);
             })

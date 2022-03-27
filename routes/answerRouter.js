@@ -14,8 +14,8 @@ answerRouter.get('/:id',answerController.getAnswerByID);
 
 answerRouter.get('/topic/:id',answerController.getAnswerByTopicID);
 
-answerRouter.put('/:id',answerController.updateAnswers);
+answerRouter.put('/',answerController.updateAnswers);
 
-answerRouter.delete('/:id',answerController.deleteAnswers);
+answerRouter.delete('/',answerController.deleteAnswers);
 
 module.exports = answerRouter;
