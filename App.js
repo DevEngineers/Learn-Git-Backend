@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const indexRouter = require("./routes/index");
 const dotenv = require("dotenv");
 dotenv.config();
+const userRouter = require("./routes/UserRoute");
 
 /**
  * Connecting to MongoDB Server
@@ -37,6 +38,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
+app.use("/profile",userRouter);
 /**
  * catch 404 and forward to error handler
  */
@@ -57,5 +59,7 @@ app.use(function (err, req, res, next) {
     res.render("error");
     console.error(err);
 });
+
+
 
 module.exports = app;
