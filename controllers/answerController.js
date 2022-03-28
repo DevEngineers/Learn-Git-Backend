@@ -2,10 +2,10 @@ const Answer = require("../models/Answer");
 
 exports.getAllAnswers = async (req,res,next) =>{
     await Answer.find({})
-        .then((answer) =>{
+        .then((answers) =>{
             res.statusCode = 200;
             res.setHeader("Content-Type","application/json")
-            res.json(answer);
+            res.json(answers);
         },(err) =>{
             next(err);
         })
@@ -16,7 +16,6 @@ exports.getAllAnswers = async (req,res,next) =>{
 };
 
 exports.addAnswers = async (req,res,next) =>{
-    console.log(req.body);
     await Answer.insertMany(req.body)
         .then((answer) =>{
             res.statusCode = 200;
