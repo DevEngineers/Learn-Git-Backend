@@ -14,7 +14,7 @@ answerRouter.get('/:id',answerController.getAnswerByID);
 
 answerRouter.get('/topic/:id',answerController.getAnswerByTopicID);
 
-answerRouter.put('/',answerController.updateAnswers);
+answerRouter.put('/',answerController.UpdateQuizAnswers);
 
 answerRouter.delete('/',answerController.deleteAnswers);
 

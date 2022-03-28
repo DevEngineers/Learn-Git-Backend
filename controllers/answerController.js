@@ -58,24 +58,8 @@ exports.getAnswerByTopicID = async (req,res,next) => {
         })
 };
 
-exports.updateAnswers = async (req, res, next) => {
-        await Answer.findOneAndUpdate(req.params.id,{
-            $set:req.body
-        },{ new :true })
-            .then((answer) => {
-                res.statusCode = 200;
-                res.setHeader("Content-Type", "application/json");
-                res.json(answer);
-            },(err) => {
-                next(err);
-            })
-            .catch((err) => {
-                next(err);
-            })
-};
-
 exports.deleteAnswers = async (req, res, next) => {
-        await Answer.remove({})
+        await Answer.deleteMany({})
             .then(() => {
                 res.statusCode = 200;
                 res.setHeader("Content-Type", "application/json");
@@ -86,5 +70,43 @@ exports.deleteAnswers = async (req, res, next) => {
             .catch((err) => {
                 next(err);
             })
+};
+
+exports.UpdateQuizAnswers  = async (req, res, next) => {
+    const answerList = req.body;
+    let responses = [];
+
+    await answerList.map((answer) =>{
+        const response = updateAnswer(answer.id,answer);
+        responses.push(response);
+    })
+
+    Promise.all(responses).then((values) => {
+        if(values.length === answerList.length){
+            res.statusCode = 200;
+            res.setHeader("Content-Type", "application/json");
+            res.json({data:values});
+        } else {
+            res.statusCode = 200;
+            res.setHeader("Content-Type", "application/json");
+            res.json({data:"Error"});
+        }
+    })
+
+    
+};
+
+const updateAnswer = async (id,answer) => {
+    return await Answer.findByIdAndUpdate(id,{
+        $set:{answer:answer.answer,isCorrect:answer.isCorrect}
+    },{ new :true })
+        .then((answer) => {
+            return answer;
+        },(err) => {
+            next(err);
+        })
+        .catch((err) => {
+            next(err);
+        })
 };
 
