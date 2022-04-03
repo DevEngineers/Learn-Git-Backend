@@ -14,7 +14,7 @@ const Question = new Schema(
             required: true,
         },
         answer: {
-          type: String,
+          type: Array,
           default: "",
           required: true,
         },
