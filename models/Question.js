@@ -13,7 +13,7 @@ const Question = new Schema(
             default: "",
             required: true,
         },
-        answer: {
+        answers: {
           type: Array,
           default: "",
           required: true,
