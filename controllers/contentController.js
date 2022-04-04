@@ -1,6 +1,6 @@
 const { product } = require("../models/products.model");
 
-async function createProduct(params, callback) {
+async function createContent(params, callback) {
   if (!params.title) {
     return callback(
       {
@@ -21,7 +21,7 @@ async function createProduct(params, callback) {
     });
 }
 
-async function getProducts(params, callback) {
+async function getContents(params, callback) {
   const title = params.title;
   var condition = title
     ? { title: { $regex: new RegExp(title), $options: "i" } }
@@ -37,7 +37,7 @@ async function getProducts(params, callback) {
     });
 }
 
-async function getProductById(params, callback) {
+async function getContentById(params, callback) {
   const productId = params.productId;
 
   product
@@ -51,7 +51,7 @@ async function getProductById(params, callback) {
     });
 }
 
-async function updateProduct(params, callback) {
+async function updateContent(params, callback) {
   const productId = params.productId;
 
   product
@@ -68,7 +68,7 @@ async function updateProduct(params, callback) {
     });
 }
 
-async function deleteProduct(params, callback) {
+async function deleteContent(params, callback) {
   const productId = params.productId;
 
   product
@@ -85,7 +85,7 @@ async function deleteProduct(params, callback) {
     });
 }
 
-// Create and Save a new Product
+
 exports.create = (req, res, next) => {
   upload(req, res, function (err) {
     if (err) {
@@ -103,7 +103,7 @@ exports.create = (req, res, next) => {
         productImage: path != "" ? url + "/" + path : "",
       };
 
-      createProduct(model, (error, results) => {
+      createContent(model, (error, results) => {
         if (error) {
           return next(error);
         }
@@ -116,13 +116,13 @@ exports.create = (req, res, next) => {
   });
 };
 
-// Retrieve all Products from the database.
+
 exports.findAll = (req, res, next) => {
   var model = {
     title: req.query.title,
   };
 
-  getProducts(model, (error, results) => {
+  getContents(model, (error, results) => {
     if (error) {
       return next(error);
     }
@@ -139,7 +139,7 @@ exports.findOne = (req, res, next) => {
     productId: req.params.id,
   };
 
-  getProductById(model, (error, results) => {
+  getContentById(model, (error, results) => {
     if (error) {
       return next(error);
     }
@@ -150,7 +150,7 @@ exports.findOne = (req, res, next) => {
   });
 };
 
-// Update a Product by the id in the request
+
 exports.update = (req, res, next) => {
   upload(req, res, function (err) {
     if (err) {
@@ -171,7 +171,7 @@ exports.update = (req, res, next) => {
 
       console.log(model);
 
-      updateProduct(model, (error, results) => {
+      updateContent(model, (error, results) => {
         if (error) {
           return next(error);
         }
@@ -184,13 +184,13 @@ exports.update = (req, res, next) => {
   });
 };
 
-// Delete a Product with the specified id in the request
+
 exports.delete = (req, res, next) => {
   var model = {
     productId: req.params.id,
   };
 
-  deleteProduct(model, (error, results) => {
+  deleteContent(model, (error, results) => {
     if (error) {
       return next(error);
     }
