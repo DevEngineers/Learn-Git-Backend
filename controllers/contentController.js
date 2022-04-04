@@ -1,4 +1,4 @@
-const { product } = require("../models/products.model");
+const { product } = require("../models/Content");
 
 async function createContent(params, callback) {
   if (!params.title) {
@@ -116,7 +116,6 @@ exports.create = (req, res, next) => {
   });
 };
 
-
 exports.findAll = (req, res, next) => {
   var model = {
     title: req.query.title,
@@ -133,7 +132,6 @@ exports.findAll = (req, res, next) => {
   });
 };
 
-// Find a single Tutorial with an id
 exports.findOne = (req, res, next) => {
   var model = {
     productId: req.params.id,
@@ -149,7 +147,6 @@ exports.findOne = (req, res, next) => {
     });
   });
 };
-
 
 exports.update = (req, res, next) => {
   upload(req, res, function (err) {
@@ -183,7 +180,6 @@ exports.update = (req, res, next) => {
     }
   });
 };
-
 
 exports.delete = (req, res, next) => {
   var model = {
