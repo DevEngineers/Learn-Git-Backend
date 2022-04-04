@@ -70,16 +70,32 @@ exports.deleteQuestion = async (req, res, next) => {
         })
 };
 
-// exports.updateQuestion = async (id,question) => {
-//     return await Question.findByIdAndUpdate(id,{
-//         $set:{question:question.question,answer:question.answer,correctAnswer:question.correctAnswer}
-//     },{ new :true })
-//         .then((question) => {
-//             return question;
-//         },(err) => {
-//             next(err);
-//         })
-//         .catch((err) => {
-//             next(err);
-//         })
-// };
+exports.deleteQuestion = async (req, res, next) => {
+    await Question.findByIdAndRemove(req.params.id)
+        .then((Question) => {
+            res.statusCode = 200;
+            res.setHeader("Content-Type", "application/json");
+            res.json({data:"Success"});
+        },(err) => {
+            next(err);
+        })
+        .catch((err) => {
+            next(err);
+        })
+};
+
+exports.updateQuestion = async (req, res, next) => {
+    await Question.findByIdAndUpdate(req.params.id,{
+        $set:req.body
+    },{ new :true })
+        .then((Question) => {
+            res.statusCode = 200;
+            res.setHeader("Content-Type", "application/json");
+            res.json(Question);
+        },(err) => {
+            next(err);
+        })
+        .catch((err) => {
+            next(err);
+        })
+};
