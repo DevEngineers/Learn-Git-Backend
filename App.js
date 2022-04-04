@@ -7,8 +7,8 @@ const mongoose = require("mongoose");
 const indexRouter = require("./routes/index");
 const answerRouter = require("./routes/answerRouter");
 const contentRouter = require("./routes/contentRouter");
-const dotenv = require("dotenv");
 const questionRouter = require("./routes/questionRouter");
+const dotenv = require("dotenv");
 dotenv.config();
 
 /**
