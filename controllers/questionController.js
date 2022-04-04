@@ -1,7 +1,6 @@
 const Question = require("../models/Question");
 
 exports.addQuestion = async (req,res,next) =>{
-    console.log(req.body);
     await Question.insertMany(req.body).then((question)=> {
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");
@@ -71,7 +70,7 @@ exports.deleteQuestion = async (req, res, next) => {
         })
 };
 
-// const updateQuestion = async (id,question) => {
+// exports.updateQuestion = async (id,question) => {
 //     return await Question.findByIdAndUpdate(id,{
 //         $set:{question:question.question,answer:question.answer,correctAnswer:question.correctAnswer}
 //     },{ new :true })

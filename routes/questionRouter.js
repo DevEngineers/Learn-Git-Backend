@@ -14,8 +14,8 @@ questionRouter.get('/topic/:id',questionController.getQuestionByTopicID);
 
 questionRouter.get('/',questionController.getAllQuestion);
 
-// questionRouter.put('/',questionController.);
+questionRouter.put('/',questionController.updateQuestion);
 
-questionRouter.delete('/',questionController.deleteQuestion);
+questionRouter.delete('/:id',questionController.deleteQuestion);
 
 module.exports = questionRouter;
