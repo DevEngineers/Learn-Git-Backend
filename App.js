@@ -8,6 +8,7 @@ const indexRouter = require("./routes/index");
 const answerRouter = require("./routes/answerRouter");
 const contentRouter = require("./routes/contentRouter");
 const dotenv = require("dotenv");
+const questionRouter = require("./routes/questionRouter");
 dotenv.config();
 
 /**
@@ -39,9 +40,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/answer", answerRouter);
-
+app.use("/answer",answerRouter);
+app.use("/question",questionRouter);
 app.use("/content", contentRouter);
+
 
 /**
  * catch 404 and forward to error handler
