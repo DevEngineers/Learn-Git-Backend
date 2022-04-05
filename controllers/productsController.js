@@ -1,4 +1,5 @@
 const { product } = require("../models/products.model");
+const upload = require("../middleware/upload.js");
 
 async function createProduct(params, callback) {
   if (!params.title) {
