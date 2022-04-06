@@ -87,20 +87,9 @@ async function deleteContent(params, callback) {
 
 
 exports.create = (req, res, next) => {
-  upload(req, res, function (err) {
-    if (err) {
-      next(err);
-    } else {
-      const url = req.protocol + "://" + req.get("host");
-
-      const path =
-        req.file != undefined ? req.file.path.replace(/\\/g, "/") : "";
-
       var model = {
         title: req.body.title,
         content: req.body.content,
-        productPrice: req.body.productPrice,
-        productImage: path != "" ? url + "/" + path : "",
       };
 
       createContent(model, (error, results) => {
@@ -112,9 +101,7 @@ exports.create = (req, res, next) => {
           data: results,
         });
       });
-    }
-  });
-};
+}
 
 exports.findAll = (req, res, next) => {
   var model = {
@@ -149,24 +136,11 @@ exports.findOne = (req, res, next) => {
 };
 
 exports.update = (req, res, next) => {
-  upload(req, res, function (err) {
-    if (err) {
-      next(err);
-    } else {
-      const url = req.protocol + "://" + req.get("host");
-
-      const path =
-        req.file != undefined ? req.file.path.replace(/\\/g, "/") : "";
-
       var model = {
         productId: req.params.id,
         title: req.body.title,
         content: req.body.content,
-        productPrice: req.body.productPrice,
-        productImage: path != "" ? url + "/" + path : "",
       };
-
-      console.log(model);
 
       updateContent(model, (error, results) => {
         if (error) {
@@ -177,9 +151,8 @@ exports.update = (req, res, next) => {
           data: results,
         });
       });
-    }
-  });
-};
+}
+
 
 exports.delete = (req, res, next) => {
   var model = {

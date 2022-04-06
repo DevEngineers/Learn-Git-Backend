@@ -1,15 +1,15 @@
-const productsController = require("../controllers/contentController");
+const contentController = require("../controllers/contentController");
 const express = require("express");
 const contentRouter = express.Router();
 
-contentRouter.post("/", productsController.create);
+contentRouter.post("/", contentController.create);
 
-contentRouter.get("/", productsController.findAll);
+contentRouter.get("/", contentController.findAll);
 
-contentRouter.get("/:id", productsController.findOne);
+contentRouter.get("/:id", contentController.findOne);
 
-contentRouter.put("/:id", productsController.update);
+contentRouter.put("/:id", contentController.update);
 
-contentRouter.delete("/:id", productsController.delete);
+contentRouter.delete("/:id", contentController.delete);
 
 module.exports = contentRouter;
