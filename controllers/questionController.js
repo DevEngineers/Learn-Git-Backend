@@ -75,7 +75,7 @@ exports.deleteQuestion = async (req, res, next) => {
         .then((Question) => {
             res.statusCode = 200;
             res.setHeader("Content-Type", "application/json");
-            res.json({data:"Success"});
+            res.json(Question);
         },(err) => {
             next(err);
         })
