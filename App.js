@@ -10,6 +10,7 @@ const contentRouter = require("./routes/contentRouter");
 const questionRouter = require("./routes/questionRouter");
 const dotenv = require("dotenv");
 dotenv.config();
+const userRouter = require("./routes/UserRoute");
 
 /**
  * Connecting to MongoDB Server
@@ -43,8 +44,7 @@ app.use("/", indexRouter);
 app.use("/answer",answerRouter);
 app.use("/question",questionRouter);
 app.use("/content", contentRouter);
-
-
+app.use("/profile",userRouter);
 /**
  * catch 404 and forward to error handler
  */
@@ -65,5 +65,7 @@ app.use(function (err, req, res, next) {
   res.render("error");
   console.error(err);
 });
+
+
 
 module.exports = app;
