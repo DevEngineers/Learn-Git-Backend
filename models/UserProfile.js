@@ -8,12 +8,6 @@ const profile = new Schema(
             default: "",
             required: true,
         },
-        // name: {
-        //     type: String,
-        //     default: "",
-        //     required: true,
-        // },
-
         email:{
             type: String,
             default: "",
