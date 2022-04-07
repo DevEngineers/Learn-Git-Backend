@@ -52,7 +52,7 @@ exports.getUserByID = async (req,res,next) => {
                     if (user) {
                         res.statusCode = 200;
                         res.setHeader("content-Type", "application/json");
-                        res.json({status:200 , _id: user._id, userName: user.userName,email:user.email,title:user.title,isActive:user.isActive});
+                        res.json({status:200 , _id: user._id, userName: user.userName,email:user.email,title:user.title,isActive:user.isActive,password:user.password});
                     } else {
                         res.setHeader("content-Type", "application/json");
                         res.status = 404;
