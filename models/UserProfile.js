@@ -3,29 +3,25 @@ const Schema = mongoose.Schema;
 
 const profile = new Schema(
     {
-        userID: {
+        userName: {
             type: String,
             default: "",
             required: true,
         },
-        name: {
-            type: String,
-            default: "",
-            required: true,
-        },
-        displayName: {
-            type: String,
-            default: "",
-            required: true,
-        },
+        // name: {
+        //     type: String,
+        //     default: "",
+        //     required: true,
+        // },
+
         email:{
             type: String,
             default: "",
             required: true,
         },
-        country:{
-            type: String,
-            default: "",
+        isActive:{
+            type: Boolean,
+            default: false,
             required: true,
         },
         title:{

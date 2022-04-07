@@ -11,6 +11,7 @@ userRouter.post('/',userController.createUser);
 userRouter.get('/',userController.getAllUsers);
 
 userRouter.get('/:id',userController.getUserByID);
+userRouter.post('/login',userController.loginByUserName);
 
 userRouter.put('/:id',userController.editUser);
 
