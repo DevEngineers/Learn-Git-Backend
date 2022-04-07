@@ -10,7 +10,7 @@ const contentRouter = require("./routes/contentRouter");
 const questionRouter = require("./routes/questionRouter");
 const dotenv = require("dotenv");
 dotenv.config();
-const userRouter = require("./routes/UserRoute");
+const userRouter = require("./routes/userRouter");
 
 /**
  * Connecting to MongoDB Server
